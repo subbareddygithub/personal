@@ -1,0 +1,37 @@
+spring:
+  profiles: prod
+  kafka:
+    bootstrap-servers: kafka1-gb-fw-1b01.apps.colt-np.ocp.standardchartered.com:32631
+    
+    topic: 
+      vdm: sci.markit.global.cmm.publish.all
+     
+    producer:
+      properties:
+        max.request.size: 10000000
+      acks: 1
+    consumer:
+      group-id: uvt
+      
+    ssl:
+      trust-store-location: classpath:gb-prod-gb-kafka-truststore.jks
+      trust-store-password: changeit
+    properties:
+      security:
+        protocol: SSL
+        
+  sci:
+    workbench-url: https://np-workbench.global.standardchartered.com:1081/api/markit/v1/%s/matches?fromTimestamp=%s
+    workbench-nextreq: https://np-workbench.global.standardchartered.com:1081/api/markit/v1/%s/matches?fromTimestamp=%s&next=%s
+    wb-token-url: https://np-workbench.global.standardchartered.com:1081/api/token/oauth/v1
+    flag-value: true
+    cron-daily: 0 25 09 ? * MON-SAT
+    cron-weekly: 0 0 0 ? * SUN
+    cron-drtime: 0 11 20 ? * MON-SUN
+    cron-timeZone: 2019-12-03
+  
+  token:
+    clientid: Fq3Tzj20xbDkWbkm6KWwUe6A2xCr87Nn
+    clientsecret: DLZRndTVTamP1VKyG2jfcLnpqmC5KLso
+    credtype: Access
+    consumerid: 6cfd6266-362b-4829-add2-fecbc82226a5

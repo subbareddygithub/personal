@@ -1,0 +1,85 @@
+So, we've now learned what containers are.
+But where do we store and manage them?
+The answer?
+Container registries!
+Container images can be stored on your local machine.
+If you run the "docker build" command and build a container image, it's now stored on
+your computer.
+But this isn’t particularly helpful for distributing that image to others or using
+it in a staging or production environment.
+You need a place where container images can be easily stored and retrieved.
+A container registry is used for the storage and distribution of named container images.
+While many features can be built on top of a registry, its most basic function is storing
+images and allowing someone (or anyone) to later retrieve them.
+Registries can be public or private.
+When an image is pushed to a public registry, anyone can pull that image.
+This is useful for open source projects or personal development where you don’t mind
+if others use or inspect your images.
+Most enterprises will opt to use a private registry, which restricts access to the images
+so that only authorized users can view and use them.
+Registries can also be hosted or self-hosted.
+Several hosted registries are available, such as IBM Cloud Container Registry.
+In this case, the user doesn't need to deploy or maintain the registry in any way; that's
+done by the provider.
+The user can use the registry as they wish.
+However, there are also registry offerings that can be run in private data centers or
+on a cloud.
+The functionality is largely the same in either case, but different individuals and enterprises
+will have different constraints and intentions that guide their choices.
+So far we've referred to storing and retrieving images, but there's some formal terminology
+that's often used for these operations.
+When storing an image in a registry, we say that you "push" an image to the registry.
+Similarly, when retrieving an image from a registry, we say that you "pull" an image
+from a registry.
+Keep that language in mind: "pushing images to" and "pulling images from" a registry.
+Images are often pushed by developers, or through automation and a build pipeline that
+they've set up.
+Those images can then be pulled to a local machine, although they're often pulled by
+systems running in the cloud or on premises, such as Kubernetes.
+We mentioned that registries store named images, and we know that the "docker build" and "docker
+tag" commands can be used to name images.
+But there's a specific format that is generally followed for image naming.
+The image name usually consists of three parts: the "hostname," the "repository," and the
+"tag."
+The hostname identifies the registry to which this image should be pushed.
+For Docker Hub, the registry is "docker.io."
+For IBM Cloud Container Registry, the registry is "us.icr.io," if you’re pushing to the
+registry in the U.S.
+Next is the repository.
+A repository is a group of related container images.
+Usually these will be different versions of the same application or service, so the name
+of the application or service makes a good repository name.
+Finally, we have the tag.
+The tag provides information about a specific version or variant of an image.
+The tag is often a version number, or it could indicate some other characteristic of the
+image, such as the operating system on which it was built.
+Let’s look at an example.
+This image name is straightforward.
+The hostname "docker.io" shows that we are pulling the image from Docker Hub.
+The repository name is "ubuntu," so we know we are pulling an Ubuntu image.
+Finally, the tag is "18.04," so we are pulling that version of Ubuntu.
+In fact, the Docker CLI infers the docker.io hostname if it is excluded, so we could run
+this simpler command to pull this image.
+Since there are many different container registries available, the additional features they provide
+help distinguish them.
+Consider IBM Cloud Container Registry, depicted in this image.
+The top left box shows capabilities provided by IBM Cloud Container Registry.
+There is an API for interacting with images, as well as IBM-provided public images and
+private repositories to which users can push their own images.
+A feature called Vulnerability Advisor scans images for common vulnerabilities and exposures.
+By ensuring security before a vulnerability can be exploited, companies are safeguarded
+from financial losses and negative press.
+The bottom left shows that users can interact with the registry through a command line or
+graphical user interface.
+Finally, at the far right is IBM Cloud Kubernetes Service, which provides authentication to
+IBM Cloud Container Registry out of the box, making it is easy to deploy images from the
+registry as containers on the Kubernetes Service.
+These are just a few examples, but they show that container registries are much more capable
+and powerful than a mere storage service.
+The functionality built on top of container registries boosts their appeal and helps developers
+work more securely and productively.
+You should now be familiar with the basic purpose of container registries and how users
+interact with them.
+You should also understand the conventions for naming images and the additional functionality
+that registries can provide to distinguish themselves.
+In the next video, you’ll learn about how to take an image and run it as a container.

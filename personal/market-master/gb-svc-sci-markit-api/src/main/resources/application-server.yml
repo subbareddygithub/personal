@@ -1,0 +1,38 @@
+spring:
+  profiles: server
+  kafka:
+    bootstrap-servers: ${BOOTSTRAP_URL}
+    topic:
+      vdm: ${VDM_TOPIC_NAME}
+      producer:
+       properties:
+         max.request.size: ${MAX_REQUEST_SIZE}
+       acks: 1
+       
+      consumer:
+        group-id: ${MESSAGE_GROUP}
+        
+  ssl:
+   truststore-location: ${KAFKA_TRUST_STORE_LOCATION}
+   truststore-password: ${KAFKA_TRUST_STORE_PASSWORD}
+   
+  properties:
+   security:
+     protocol: ${KAFKA_SECURITY_PROTOCOL}
+     
+  sci:
+   workbench-url: ${WB_URL}
+   workbench-nextreq: ${WB_NEXTREQ_URL}
+   wb-token-url: ${WB_TOKEN_URL}
+   flag-value: ${FLAG_VALUE}
+   cron-daily: ${CRON_DAILY}
+   cron-weekly: ${CRON_WEEKLY}
+   
+  token:
+   clientid: ${CLIENT_ID}
+   clientsecret: ${CLIENT_SECRET}
+   credtype: ${CRED_TYPE}
+   consumerid: ${CONSUMER_ID}
+   
+    
+       
